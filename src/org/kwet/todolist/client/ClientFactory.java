@@ -12,4 +12,5 @@ public interface ClientFactory
 	PlaceController getPlaceController();
 	ITodoView getTodoView();
 	IWelcomeView getWelcomeView();
+	ClientRequestFactory getClientRequestFactory();
 }

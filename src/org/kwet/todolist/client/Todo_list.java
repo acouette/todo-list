@@ -1,6 +1,5 @@
 package org.kwet.todolist.client;
 
-import org.kwet.todolist.client.model.ClientTodoList;
 import org.kwet.todolist.client.mvp.AppActivityMapper;
 import org.kwet.todolist.client.mvp.AppPlaceHistoryMapper;
 import org.kwet.todolist.client.places.WelcomePlace;
@@ -21,7 +20,7 @@ import com.google.web.bindery.event.shared.EventBus;
  */
 public class Todo_list implements EntryPoint {
 
-	private final TodoServiceAsync todoService = GWT.create(TodoService.class);
+	
 
 	 private Place defaultPlace = new WelcomePlace();
 	 
@@ -32,11 +31,10 @@ public class Todo_list implements EntryPoint {
 	 */
 	public void onModuleLoad() {
 
-		final ClientTodoList todoList = new ClientTodoList();
-
 		ClientFactory clientFactory = GWT.create(ClientFactory.class);
         EventBus eventBus = clientFactory.getEventBus();
         PlaceController placeController = clientFactory.getPlaceController();
+        
         
         // Start ActivityManager for the main widget with our ActivityMapper
         ActivityMapper activityMapper = new AppActivityMapper(clientFactory);

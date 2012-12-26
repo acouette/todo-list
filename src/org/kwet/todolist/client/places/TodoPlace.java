@@ -3,29 +3,29 @@ package org.kwet.todolist.client.places;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceTokenizer;
 
-public class TodoPlace extends Place{
+public class TodoPlace extends Place {
 
-	private String username;
+	private long userId;
 
-	public TodoPlace(String username) {
-		super();
-		this.username = username;
+	public TodoPlace(long userId) {
+		this.userId = userId;
 	}
-	
-	public String getUsername() {
-		return username;
+
+	public long getUserId() {
+		return userId;
 	}
 
 	public static class Tokenizer implements PlaceTokenizer<TodoPlace> {
-        @Override
-        public String getToken(TodoPlace place) {
-            return place.getUsername();
-        }
 
-        @Override
-        public TodoPlace getPlace(String token) {
-            return new TodoPlace(token);
-        }
-    }
-	
+		@Override
+		public String getToken(TodoPlace place) {
+			return String.valueOf(place.getUserId());
+		}
+
+		@Override
+		public TodoPlace getPlace(String token) {
+			return new TodoPlace(Long.valueOf(token));
+		}
+	}
+
 }

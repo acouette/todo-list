@@ -5,10 +5,18 @@
 		.important {
 			font-weight: bold;
 		}
+		.panel {
+			padding:5px 5px 5px 5px;
+		}
 	</ui:style>
 	<g:HTMLPanel>
-		Hello,
-		<g:TextBox ui:field='name'/>.
-		<g:Anchor ui:field="button" text="Validate"></g:Anchor>
+	<div class="panel">
+		<h2>Users</h2> 
+		<g:VerticalPanel ui:field="userlist"></g:VerticalPanel>
+		<br/>
+		New user ?
+		<g:TextBox ui:field='name'/>
+		<g:Button ui:field="button" text="Validate"/>
+		</div>
 	</g:HTMLPanel>
 </ui:UiBinder> 
