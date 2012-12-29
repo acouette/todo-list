@@ -9,6 +9,7 @@ import org.kwet.todolist.shared.UserProxy;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
@@ -51,6 +52,13 @@ public class WelcomeViewImpl extends Composite implements IWelcomeView {
 	@UiHandler("button")
 	void onClick(ClickEvent e) {
 		presenter.addUser(name.getText());
+	}
+	
+	@UiHandler("name")
+	void onKeyUp(KeyUpEvent e) {
+		if(e.getNativeKeyCode() == 13){
+			presenter.addUser(name.getText());
+		}
 	}
 
 	@Override

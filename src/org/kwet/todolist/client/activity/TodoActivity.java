@@ -1,5 +1,6 @@
 package org.kwet.todolist.client.activity;
 
+import java.util.Iterator;
 import java.util.Set;
 
 import org.kwet.todolist.client.ClientFactory;
@@ -56,7 +57,25 @@ public class TodoActivity extends AbstractActivity implements
 		todos.add(todo);
 		user.setTodos(todos);
 		userRequest.updateUser(user).with("todos").fire();
-		todoView.addTodoToPanel(todo);
+		todoView.setUser(user);
+	}
+
+	@Override
+	public void removeTodo(long id) {
+		UserRequest userRequest = clientFactory.getClientRequestFactory().userRequest();
+		user = userRequest.edit(user);
+		Set<TodoProxy> todos = user.getTodos();
+		Iterator<TodoProxy> todoIt = todos.iterator();
+		while (todoIt.hasNext()) {
+			TodoProxy todo = todoIt.next();
+			if(todo.getId() == id){
+				todoIt.remove();
+				break;
+			}
+		}
+		user.setTodos(todos);
+		userRequest.updateUser(user).with("todos").fire();
+		todoView.setUser(user);
 	}
 
 }

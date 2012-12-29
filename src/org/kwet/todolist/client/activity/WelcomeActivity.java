@@ -48,8 +48,11 @@ public class WelcomeActivity extends AbstractActivity implements IWelcomeView.Pr
 
 
 	@Override
-	public UserProxy addUser(final String username) {
+	public UserProxy addUser(final String username) {		
+		
 		UserRequest userRequest = clientFactory.getClientRequestFactory().userRequest();
+		
+		
 		final UserProxy user = userRequest.create(UserProxy.class);
 		user.setUsername(username);
 		userRequest.addUser(user).fire(new Receiver<UserProxy>() {
